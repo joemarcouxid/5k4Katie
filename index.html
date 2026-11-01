@@ -543,7 +543,6 @@ $('wSkip').onclick = () => {
   advance();
 };
 function closeWorkout(force){
-  if (running && force !== true && !confirm('End this workout? It won’t be marked done.')) return;
   running = false; clearInterval(tick); releaseAwake(); try { speechSynthesis.cancel(); } catch(e) {}
   $('workout').style.display = 'none';
 }
