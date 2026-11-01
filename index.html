@@ -89,7 +89,7 @@
 
 <header>
   <h1>5k<span>4</span>Katie</h1>
-  <div class="sub">A gentle 14-week path from walking to a 5K, with strength and back care built in.</div>
+  <div class="sub">A 10-week path to a 5K, with strength and back care built in.</div>
 </header>
 
 <main>
@@ -97,7 +97,7 @@
 <section id="tab-run" class="on">
   <div class="card">
     <div class="row">
-      <div><strong id="pText">0 of 42 walk/jogs</strong><div class="sub" id="pSub">Let's get started!</div></div>
+      <div><strong id="pText">0 of 30 walk/jogs</strong><div class="sub" id="pSub">Let's get started!</div></div>
       <div style="font-size:34px" id="pEmoji">👟</div>
     </div>
     <div class="progress"><div id="pBar" style="width:0"></div></div>
@@ -115,7 +115,7 @@
 <!-- ================= STRENGTH TAB ================= -->
 <section id="tab-strength">
   <h2>Home strength 💪</h2>
-  <div class="sub">Twice a week, on days you don't run. About 20 minutes, no equipment — just a chair, a wall and a step. Strong hips, legs and trunk protect the low back and knees and make running feel easier.</div>
+  <div class="sub">Twice a week, on days you don't run. About 25 minutes with a pair of dumbbells, a wall and a step. Strong hips, legs and trunk protect the low back and knees and make running feel easier.</div>
 
   <div class="phase-pills" id="phasePills"></div>
   <div class="card" id="strengthCard"></div>
@@ -170,8 +170,8 @@
   <div class="card">
     <strong>Why it's built this way</strong>
     <ul class="clean">
-      <li><strong>Week 1 is walking only.</strong> Coming back from no running, the heart and lungs adapt fast, but tendons, joints and the back take longer. Starting slow lets them catch up.</li>
-      <li><strong>Jogging time grows a little at a time,</strong> and every 4th week or so is a lighter "recovery" week (marked in green) to absorb the work.</li>
+      <li><strong>Short jogs first.</strong> Coming back to running, the heart and lungs adapt fast, but tendons, joints and the back take longer. Walk breaks let them catch up.</li>
+      <li><strong>Jogging time grows a little at a time,</strong> and weeks 5 and 8 are lighter "recovery" weeks (marked in green) to absorb the work.</li>
       <li><strong>Strength days</strong> build the hips, thighs, calves and trunk. That's where most running aches, low back included, are prevented.</li>
       <li><strong>The 5K is the finish line, not a race.</strong> Jogging it all the way is the goal, and walk breaks are still a win.</li>
     </ul>
@@ -189,6 +189,17 @@
   <div class="card note">
     <strong>Check with a doctor first</strong> if there are heart, blood-pressure, chest-pain or dizziness concerns, or any ongoing joint issues.<br><br>
     <strong>See someone promptly</strong> if back pain comes with numbness or tingling down a leg, leg weakness, or any change in bladder or bowel control. A physical therapist is a great ally if the back keeps flaring.
+  </div>
+
+  <div class="card">
+    <strong>At the track 🏟️</strong>
+    <ul class="clean">
+      <li>1 lap = 400 m. <strong>5K = 12½ laps.</strong> A mile is about 4 laps.</li>
+      <li>The track is ideal for this plan: flat, soft and predictable, which is easy on the back.</li>
+      <li>Run counter-clockwise. Inside lanes are usually for faster runners, so jog in a middle lane and walk in the outer lanes.</li>
+      <li>Switch direction now and then (if the track allows it) so the same hip and knee aren't always on the inside of the curve.</li>
+      <li>The track is a perfect place for your 5K day. Count 12½ laps, or let the app run and keep going until you've done the laps.</li>
+    </ul>
   </div>
 
   <div class="card">
@@ -241,70 +252,63 @@ const R = (m) => ['run', m], W = (m) => ['walk', m];
 const rep = (n, ...parts) => Array.from({length:n}, () => parts).flat();
 
 const PLAN = [
-  { week:1,  note:"Walking only — building the base", days:[ [W(15)], [W(18)], [W(20)] ]},
-  { week:2,  note:"First tiny jogs (30 seconds)", days:[
-      rep(8, R(.5), W(2)), rep(8, R(.5), W(2)), rep(10, R(.5), W(1.5)) ]},
-  { week:3,  note:"1-minute jogs", days:[
-      rep(6, R(1), W(2)), rep(7, R(1), W(2)), rep(8, R(1), W(2)) ]},
-  { week:4,  note:"Recovery week — a bit lighter", easy:true, days:[
-      rep(6, R(1), W(2)), rep(6, R(1), W(1.5)), rep(7, R(1), W(1.5)) ]},
-  { week:5,  note:"90-second jogs", days:[
-      rep(6, R(1.5), W(2)), rep(6, R(1.5), W(2)), rep(7, R(1.5), W(1.5)) ]},
-  { week:6,  note:"2-minute jogs", days:[
-      rep(5, R(2), W(2)), rep(5, R(2), W(2)), rep(6, R(2), W(1.5)) ]},
-  { week:7,  note:"3-minute jogs", days:[
-      rep(4, R(3), W(2)), rep(4, R(3), W(2)), rep(5, R(3), W(2)) ]},
+  { week:1,  note:"Easing in — 1-minute jogs", days:[
+      rep(8, R(1), W(1.5)), rep(8, R(1), W(1.5)), rep(7, R(1.5), W(1.5)) ]},
+  { week:2,  note:"2- and 3-minute jogs", days:[
+      rep(6, R(2), W(1.5)), rep(6, R(2), W(1.5)), rep(5, R(3), W(1.5)) ]},
+  { week:3,  note:"Up to 4 minutes", days:[
+      rep(5, R(3), W(1.5)), rep(4, R(4), W(1.5)), rep(4, R(4), W(1.5)) ]},
+  { week:4,  note:"5- and 6-minute jogs", days:[
+      rep(3, R(5), W(2)), rep(3, R(6), W(2)), rep(3, R(6), W(1.5)) ]},
+  { week:5,  note:"Recovery week — absorb the work", easy:true, days:[
+      rep(3, R(5), W(2)), rep(2, R(8), W(2)), rep(2, R(10), W(2)) ]},
+  { week:6,  note:"Longer stretches", days:[
+      [R(12), W(2), R(8)], [R(15), W(2), R(8)], [R(15), W(1.5), R(10)] ]},
+  { week:7,  note:"20 minutes nonstop", days:[
+      [R(18), W(2), R(7)], [R(20)], [R(20), W(1), R(8)] ]},
   { week:8,  note:"Recovery week — a bit lighter", easy:true, days:[
-      rep(5, R(2), W(2)), rep(4, R(3), W(2)), rep(4, R(3), W(1.5)) ]},
-  { week:9,  note:"4- and 5-minute jogs", days:[
-      rep(4, R(4), W(2)), rep(3, R(5), W(2.5)), rep(3, R(5), W(2)) ]},
-  { week:10, note:"Longer stretches", days:[
-      rep(3, R(6), W(2)), rep(2, R(8), W(2)), [R(8), W(2), R(8), W(2), R(4)] ]},
-  { week:11, note:"10 minutes at a time", days:[
-      [R(10), W(2), R(8)], [R(10), W(2), R(10)], [R(12), W(2), R(8)] ]},
-  { week:12, note:"Recovery week — a bit lighter", easy:true, days:[
-      [R(8), W(2), R(8)], [R(10), W(2), R(8)], [R(15), W(2), R(5)] ]},
-  { week:13, note:"Building to steady jogging", days:[
-      [R(15), W(2), R(8)], [R(18), W(2), R(6)], [R(20), W(2), R(5)] ]},
-  { week:14, note:"5K week! 🎉", days:[
-      [R(22)], [R(25)], [R(35)] ]},
+      [R(15), W(2), R(10)], [R(22)], [R(25)] ]},
+  { week:9,  note:"Steady jogging", days:[
+      [R(25)], [R(28)], [R(30)] ]},
+  { week:10, note:"5K week! 🎉", days:[
+      [R(25)], [R(20)], [R(35)] ]},
 ];
 const FINAL_LABEL = "🏅 5K Day — jog the distance at chatting pace. Walk breaks are allowed!";
 
 const WORKOUTS = [];
 PLAN.forEach(w => w.days.forEach((d, i) => {
-  WORKOUTS.push({ id:`v2w${w.week}d${i+1}`, week:w.week, day:i+1, steps:[['warm',5], ...d, ['cool',5]] });
+  WORKOUTS.push({ id:`v3w${w.week}d${i+1}`, week:w.week, day:i+1, steps:[['warm',5], ...d, ['cool',5]] });
 }));
 const LAST = WORKOUTS[WORKOUTS.length-1];
 
 // ===================== STRENGTH =====================
 const PHASES = [
-  { name:"Phase 1", weeks:"Weeks 1–4", focus:"Foundation: learn the moves, wake up the glutes and trunk.", ex:[
-    {n:"Glute bridge", d:"2 × 10", c:"Lie on your back, knees bent. Squeeze your bum and lift your hips until there's a straight line from knees to shoulders. Pause 2 sec, lower slowly.", e:"Lift only halfway."},
-    {n:"Sit-to-stand", d:"2 × 8", c:"From a sturdy chair, feet hip-width apart, lean slightly forward and stand up without using your hands. Sit back down slowly.", e:"Use a higher seat or a cushion, or push lightly with your hands."},
-    {n:"Bird dog", d:"2 × 5 each side, 5-sec hold", c:"On hands and knees, slowly reach one arm forward and the opposite leg back. Keep your back flat like a tabletop, with no twisting.", e:"Move just the leg, or just the arm."},
-    {n:"Side plank (on knees)", d:"2 × 15 sec each side", c:"Lie on your side on your elbow, knees bent. Lift your hips so you're straight from knees to head.", e:"Shorter hold (10 sec)."},
-    {n:"McGill curl-up", d:"2 × 5, 8-sec hold", c:"Lie on your back, one knee bent, hands under your low back. Lift your head and shoulders just an inch, with your neck still. This is very small and very back-friendly.", e:"Hold 5 sec."},
-    {n:"Calf raise (both legs)", d:"2 × 12", c:"Hands on a wall. Rise up onto your toes slowly, pause, then lower slowly. Strong calves protect the Achilles and shins.", e:"Fewer reps."},
+  { name:"Phase 1", weeks:"Weeks 1–3", focus:"Foundation: solid form, glutes and trunk switched on. Light dumbbells.", ex:[
+    {n:"Goblet squat", d:"3 × 10", c:"Hold one dumbbell at your chest. Sit your hips back and down to about chair height, keeping your chest up and knees in line with your toes. Drive up through your whole foot.", e:"Bodyweight squat to a chair."},
+    {n:"Reverse lunge", d:"2 × 8 each side", c:"Step one foot back and lower until your back knee nearly touches the floor, then push up through your front heel. Upright torso. Reverse lunges are gentler on knees than forward ones.", e:"Hold a chair, or go only halfway down."},
+    {n:"Glute bridge", d:"3 × 12", c:"On your back, knees bent. Squeeze your glutes and lift your hips to a straight line from knees to shoulders. Pause 2 sec. Rest a dumbbell on your hips when it feels easy.", e:"Bodyweight, smaller range."},
+    {n:"Bird dog", d:"2 × 6 each side, 5-sec hold", c:"On hands and knees, reach one arm forward and the opposite leg back. Back flat like a tabletop, no twisting.", e:"Move just the leg."},
+    {n:"Side plank (on knees)", d:"2 × 20 sec each side", c:"On your elbow, knees bent, hips lifted so you're straight from knees to head.", e:"15 sec."},
+    {n:"McGill curl-up", d:"2 × 6, 8-sec hold", c:"On your back, one knee bent, hands under your low back. Lift your head and shoulders just an inch with your neck still. A back-friendly alternative to crunches.", e:"5-sec hold."},
+    {n:"Calf raise", d:"3 × 15", c:"Hands on a wall. Rise onto your toes slowly, pause, lower slowly. Strong calves protect the Achilles and shins.", e:"2 sets."},
   ]},
-  { name:"Phase 2", weeks:"Weeks 5–9", focus:"Build: more reps, single-leg balance, stairs.", ex:[
-    {n:"Marching bridge", d:"3 × 8 (each lift = 1)", c:"Hold a bridge and slowly lift one foot an inch off the floor, then the other, keeping your hips level.", e:"Regular bridge, 3 × 12."},
-    {n:"Chair squat", d:"3 × 10", c:"Push your hips back and lower until you lightly touch the chair, then stand. Chest up, knees in line with your toes.", e:"Sit-to-stand."},
-    {n:"Split squat (hold a chair)", d:"2 × 8 each side", c:"Take a long step stance. Lower your back knee toward the floor, then press up through your front heel. Upright torso.", e:"Go only a third of the way down."},
-    {n:"Step-up", d:"2 × 10 each side", c:"On the bottom stair, step up and drive through your whole front foot, then step down slowly. Hold the rail.", e:"Lower step, or slower."},
-    {n:"Bird dog", d:"3 × 6 each side, 5-sec hold", c:"Same as before, with a tiny 'draw a square' with your hand and foot to challenge balance.", e:"Phase 1 version."},
-    {n:"Side plank (on knees)", d:"3 × 20 sec each side", c:"Keep your hips forward and stacked.", e:"15 sec."},
-    {n:"Single-leg calf raise", d:"2 × 10 each side", c:"Hands on a wall, one foot up. Rise slowly, lower slowly.", e:"Both legs, 3 × 15."},
+  { name:"Phase 2", weeks:"Weeks 4–7", focus:"Build: more load, single-leg strength, hip hinge.", ex:[
+    {n:"Dumbbell Romanian deadlift", d:"3 × 10", c:"Dumbbells in front of your thighs, soft knees. Push your hips back with a long flat back, lowering to mid-shin, then squeeze your glutes to stand. The best way to learn safe bending. Stop where your back wants to round.", e:"Hands on hips, no weight."},
+    {n:"Dumbbell split squat", d:"3 × 8 each side", c:"Dumbbells at your sides, long step stance. Lower your back knee toward the floor and press up through your front heel.", e:"Bodyweight, hold a chair."},
+    {n:"Step-up", d:"3 × 10 each side", c:"On a sturdy step or bench about knee-height or lower. Drive through your whole front foot, then step down slowly. Add dumbbells when easy.", e:"Bottom stair, no weight."},
+    {n:"Single-leg glute bridge", d:"3 × 8 each side", c:"One foot down, the other leg straight up. Drive through the heel and keep your hips level.", e:"Marching bridge."},
+    {n:"Side plank", d:"3 × 25 sec each side", c:"From your feet if you can hold a straight line, otherwise from your knees.", e:"On knees."},
+    {n:"Bird dog", d:"3 × 8 each side, 5-sec hold", c:"Slow and steady. Imagine a glass of water on your low back.", e:"Fewer reps."},
+    {n:"Single-leg calf raise", d:"3 × 12 each side", c:"Hand on a wall, one foot up. Slow up, slow down.", e:"Both legs."},
   ]},
-  { name:"Phase 3", weeks:"Weeks 10–14", focus:"Strong & resilient: load a little and go single-leg.", ex:[
-    {n:"Single-leg bridge", d:"3 × 8 each side", c:"One foot down, the other knee hugged in or straight up. Drive through the heel and keep your hips level.", e:"Marching bridge."},
-    {n:"Goblet squat", d:"3 × 10", c:"Hold a full water jug, a backpack or a dumbbell at your chest. Squat to chair height and stand tall.", e:"Chair squat, no weight."},
-    {n:"Reverse lunge (hold a chair)", d:"3 × 8 each side", c:"Step one foot back, lower gently, then push back up through your front heel.", e:"Split squat."},
-    {n:"Hip hinge / good morning", d:"3 × 10", c:"Hands on your hips, soft knees. Push your hips back with a long flat back until you feel your hamstrings, then squeeze your glutes to stand. This teaches safe bending for everyday life.", e:"Smaller range, back to a wall."},
-    {n:"Step-up (higher or slower)", d:"3 × 10 each side", c:"Second stair, or a 3-second lowering.", e:"Bottom stair."},
-    {n:"Side plank", d:"3 × 25 sec each side", c:"Try it from your feet if knees feel easy, otherwise stay on your knees.", e:"On knees, 20 sec."},
-    {n:"Bird dog", d:"3 × 8 each side, 5-sec hold", c:"Slow and steady.", e:"Fewer reps."},
-    {n:"Single-leg calf raise", d:"3 × 12 each side", c:"Slow down, slow up. Add a backpack when easy.", e:"2 sets."},
+  { name:"Phase 3", weeks:"Weeks 8–10", focus:"Strong & resilient: heavier, single-leg balance, carries. Lighten up in 5K week.", ex:[
+    {n:"Goblet squat", d:"3 × 8 (heavier)", c:"Use a heavier dumbbell than in Phase 1. Same form: chest up, controlled.", e:"Phase 1 weight."},
+    {n:"Dumbbell reverse lunge", d:"3 × 8 each side", c:"Dumbbells at your sides. Step back, lower with control, drive up through your front heel.", e:"Bodyweight."},
+    {n:"Single-leg Romanian deadlift", d:"3 × 8 each side", c:"Light dumbbell in the opposite hand, other hand on a wall or chair if needed. Hinge forward on one leg, back flat, hips square. Great for balance and running stability.", e:"Two-leg RDL."},
+    {n:"Weighted step-up", d:"3 × 8 each side", c:"Dumbbells at your sides, slow 3-second step down.", e:"No weight."},
+    {n:"Suitcase carry", d:"3 × 30 sec each side", c:"Hold one heavy dumbbell at your side and walk tall without leaning. Superb for low-back and trunk strength.", e:"Lighter weight."},
+    {n:"Side plank", d:"3 × 30 sec each side", c:"From your feet, top leg lifted for a challenge.", e:"From your knees."},
+    {n:"Single-leg calf raise (weighted)", d:"3 × 12 each side", c:"Hold a dumbbell on the same side. Slow tempo.", e:"No weight."},
   ]},
 ];
 
@@ -339,8 +343,8 @@ const stepCue = (s) => s[0]==='mob' ? s[3] : s[0]==='run' ? 'Easy pace. Tall, sh
   s[0]==='switch' ? '' : 'Brisk walk with arms swinging. Recover.';
 
 let S = { done:{}, feel:{}, str:{} };
-try { S = Object.assign(S, JSON.parse(localStorage.getItem('5k4katie-v2') || '{}')); } catch(e) {}
-const save = () => { try { localStorage.setItem('5k4katie-v2', JSON.stringify(S)); } catch(e) {} };
+try { S = Object.assign(S, JSON.parse(localStorage.getItem('5k4katie-v3') || '{}')); } catch(e) {}
+const save = () => { try { localStorage.setItem('5k4katie-v3', JSON.stringify(S)); } catch(e) {} };
 const nextWorkout = () => WORKOUTS.find(w => !S.done[w.id]) || LAST;
 const currentWeek = () => nextWorkout().week;
 
@@ -388,7 +392,7 @@ function renderRun(){
 
 // ===================== RENDER: STRENGTH TAB =====================
 let shownPhase = null;
-const phaseForWeek = (wk) => wk <= 4 ? 0 : wk <= 9 ? 1 : 2;
+const phaseForWeek = (wk) => wk <= 3 ? 0 : wk <= 7 ? 1 : 2;
 function renderStrength(){
   const wk = currentWeek(), rec = phaseForWeek(wk);
   if (shownPhase === null) shownPhase = rec;
