@@ -550,7 +550,13 @@ function closeWorkout(force){
 $('wClose').onclick = () => closeWorkout(false);
 $('startNext').onclick = () => openWorkout(nextWorkout());
 $('startMob').onclick = () => openWorkout(MOB_WORKOUT);
-$('resetBtn').onclick = () => { if (confirm('Clear all progress?')) { S = { done:{}, feel:{}, str:{} }; save(); renderAll(); } };
+let resetArmed = false;
+$('resetBtn').onclick = () => {
+  const b = $('resetBtn');
+  if (!resetArmed) { resetArmed = true; b.textContent = 'Tap again to clear everything'; setTimeout(() => { resetArmed = false; b.textContent = 'Reset all progress'; }, 4000); return; }
+  resetArmed = false; b.textContent = 'Reset all progress';
+  S = { done:{}, feel:{}, str:{} }; save(); renderAll();
+};
 document.addEventListener('visibilitychange', () => { if (running && document.visibilityState === 'visible') keepAwake(); });
 
 renderAll(); renderMob();
